@@ -29,7 +29,7 @@ app.get('/in_stock=:in_stock', function(req,res){
   }
 });
 
-const min_price = app.get('/min_price=:product_price', function(req,res){
+app.get('/min_price=:product_price', function(req,res){
   const price = req.params.product_price;
   if ((price > 0) && (price <= 10)) {
     let filteredData = [];
@@ -45,7 +45,7 @@ const min_price = app.get('/min_price=:product_price', function(req,res){
   // res.send(Math.min(`${filteredData}`));
 });
 
-const max_price = app.get('/max_price=:product_price',function(req,res){
+app.get('/max_price=:product_price',function(req,res){
   const price = req.params.product_price;
   if ((price == 100)) {
     let filteredData = [];
@@ -59,27 +59,27 @@ const max_price = app.get('/max_price=:product_price',function(req,res){
     res.send('Invalid')
   }
 })
-
-app.get('/min_price=:value/max_price=:value',function(req,res){
-  const price = req.params.product_price;
-  if (min_price && max_price) {
-    let filteredData=[];
-    for (var i = 0; i < data.length; i++) {
-      if (data[i].product_price.toString()===price) {
-        filteredData.push(data[i]);
-      }
-    }
-    res.send(filteredData);
-  } else {
-    res.send('Invalid')
-  }
-})
 //
-// app.get('min_price=:value/max_price=:value', function(req,res){
+// app.get('/min_price=:value/max_price=:value',function(req,res){
 //   const price = req.params.product_price;
-//   const min_price = ((price>0) && (price<=10));
-//   const max_price = (price = 100)
-//   if (min_price || max_price) {
+//   if ((Math.min(price) = 1) && (Math.max(price) = 100)) {
+//     let filteredData=[];
+//     for (var i = 0; i < data.length; i++) {
+//       if (data[i].product_price.toString()===price) {
+//         filteredData.push(data[i]);
+//       }
+//     }
+//     res.send(filteredData);
+//   } else {
+//     res.send('Invalid')
+//   }
+// })
+
+// app.get('/min_price=:value/max_price=:value', function(req,res){
+//   const price = req.params.product_price;
+//   const min_price = ((price>0));
+//   const max_price = (price = 100);
+//   if (min_price && max_price) {
 //     let filteredData=[];
 //     for (var i = 0; i < data.length; i++) {
 //       if (data[i].product_price.toString()===price) {
